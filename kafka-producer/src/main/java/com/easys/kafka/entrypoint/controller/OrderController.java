@@ -5,21 +5,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.easys.kafka.producer.OrderProducer;
+import com.easys.kafka.usecase.OrderProducerUseCase;
 
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
 
-	private final OrderProducer orderProducer;
+	private final OrderProducerUseCase orderProducerUseCase;
 
-	public OrderController(OrderProducer orderProducer) {
-		this.orderProducer = orderProducer;
+	public OrderController(OrderProducerUseCase orderProducerUseCase) {
+		this.orderProducerUseCase = orderProducerUseCase;
 	}
 
 	@PostMapping
 	public void send(@RequestBody String order) {
-		this.orderProducer.send(order);
+		this.orderProducerUseCase.send(order);
 	}
 
 }

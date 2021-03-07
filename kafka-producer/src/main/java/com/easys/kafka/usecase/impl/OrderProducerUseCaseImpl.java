@@ -1,4 +1,4 @@
-package com.easys.kafka.producer.impl;
+package com.easys.kafka.usecase.impl;
 
 import java.util.UUID;
 
@@ -7,10 +7,10 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.easys.kafka.producer.OrderProducer;
+import com.easys.kafka.usecase.OrderProducerUseCase;
 
 @Component
-public class OrderProducerImpl implements OrderProducer {
+public class OrderProducerUseCaseImpl implements OrderProducerUseCase {
 
 	@Value("${order.topic}")
 	private String orderTopic;
@@ -19,7 +19,7 @@ public class OrderProducerImpl implements OrderProducer {
 	private final KafkaTemplate kafkaTemplate;
 
 	@SuppressWarnings("rawtypes")
-	public OrderProducerImpl(KafkaTemplate kafkaTemplate) {
+	public OrderProducerUseCaseImpl(KafkaTemplate kafkaTemplate) {
 		this.kafkaTemplate = kafkaTemplate;
 	}
 
